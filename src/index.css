@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --accent: #FF5A1F; }
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #0E0F11; color: #EDEBE6; font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:hover { color: #FF6A2B; }
+::selection { background: var(--accent); color: #0E0F11; }
+
+@layer utilities {
+  .font-wide { font-stretch: 125%; }
+  .font-wide-md { font-stretch: 115%; }
+  .font-wide-sm { font-stretch: 112%; }
+  .text-outline { color: transparent; -webkit-text-stroke: 2px #EDEBE6; }
+  .text-outline-thin { color: transparent; -webkit-text-stroke: 1.5px #EDEBE6; }
+  .cq { container-type: inline-size; }
+  .blueprint { background-color: #111316; background-image: linear-gradient(#1A1D20 1px, transparent 1px), linear-gradient(90deg, #1A1D20 1px, transparent 1px); background-size: 32px 32px; }
+  .blueprint-sm { background-color: #111316; background-image: linear-gradient(#181A1D 1px, transparent 1px), linear-gradient(90deg, #181A1D 1px, transparent 1px); background-size: 24px 24px; }
+  .hatch { background-color: #121417; background-image: repeating-linear-gradient(135deg, #191B1E 0 1px, transparent 1px 14px); }
+  .pad-x { padding-left: clamp(20px, 5vw, 72px); padding-right: clamp(20px, 5vw, 72px); }
+}
+
+@keyframes cbTick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes cbScan { 0% { transform: translateY(0); } 100% { transform: translateY(520px); } }
+@keyframes cbPulse { 0% { box-shadow: 0 0 0 0 rgba(255,90,31,.55); } 70% { box-shadow: 0 0 0 14px rgba(255,90,31,0); } 100% { box-shadow: 0 0 0 0 rgba(255,90,31,0); } }
+.cb-tick { animation: cbTick 42s linear infinite; }
+.cb-scan { animation: cbScan 7s cubic-bezier(.6,0,.4,1) infinite alternate; }
+.cb-pin { animation: cbPulse 2.4s ease-out infinite; }
+.cb-field:focus { outline: 2px solid #FF6A2B; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cb-tick, .cb-scan, .cb-pin { animation: none; }
+}
